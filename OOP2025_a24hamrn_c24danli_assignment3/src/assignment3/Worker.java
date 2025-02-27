@@ -11,7 +11,7 @@ public class Worker implements Runnable {
 		this.energy = (int) (Math.random() * (91 - 30)) + 30;
 		this.energyDepletionTime = (int) ((Math.random() * (1501 - 500)) + 500);
 		
-	}
+	}//test
 
 	public int getEnergy() {
 		return energy;
