@@ -19,7 +19,7 @@ public class Worker implements Runnable {
 
 	public int DrinkCoffe(int drink) {
 		energy = energy + drink;
-		System.out.print(GetName()+"drank a coffe and got "+ drink +"energy"  );
+		System.out.println(GetName()+"drank a coffe and got "+ drink + " energy"  );
 		return energy;
 	}
 
@@ -37,7 +37,7 @@ public class Worker implements Runnable {
 
 	
 	public void run() {
-		for (;;) {
+		while(energy > 0) {
 			try {
 				Thread.sleep(energyDepletionTime);
 			} catch (InterruptedException e) {

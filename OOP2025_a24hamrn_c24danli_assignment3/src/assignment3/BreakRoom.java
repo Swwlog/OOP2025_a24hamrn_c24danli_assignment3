@@ -18,7 +18,9 @@ public class BreakRoom implements Runnable {
 		coffeQue.add(worker);
 	}
 	
-	
+	public void removeFromQueue(Worker worker) {
+		coffeQue.remove(worker);
+	}
 	
 	
 	
@@ -39,11 +41,11 @@ public class BreakRoom implements Runnable {
 						coffeQue.offer(coffeQue.remove());
 					}
 					else {
-						addWorkerToCoffeQue(coffeQue.remove());
-						
+						System.out.println(coffeQue.peek().GetName());
+						addWorkerToCoffeQue(coffeQue.poll());
+						//coffeQue.remove();
+						System.out.println(coffeQue.poll().GetName());
 					}
-					
-
 			}
 
 		}
