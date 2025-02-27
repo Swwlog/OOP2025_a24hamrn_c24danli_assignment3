@@ -6,12 +6,13 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class Fika implements Runnable {
 	private ConcurrentLinkedQueue<Worker> coffeQue;
 	private ArrayList<Worker> officeList;
+	BreakRoom breakRoom;
 
 	public Fika() {
 		Thread thr2 = new Thread(this);
 		thr2.start();
 		officeList = new ArrayList<Worker>();
-		coffeQue = new ConcurrentLinkedQueue<Worker>();
+		breakRoom = new BreakRoom();
 		try {
 			thr2.sleep(500);
 		} catch (InterruptedException e) {
@@ -26,6 +27,10 @@ public class Fika implements Runnable {
 			// System.out.println(worker.GetName());
 		}
 
+	}
+	
+	public void addWorkerToWorkList(Worker worker) {
+		officeList.add(worker);
 	}
 
 	public static void main(String[] args) throws InterruptedException {
@@ -44,7 +49,7 @@ public class Fika implements Runnable {
 			for (int i = 0; i < officeList.size(); i++) {
 				if (officeList.get(i).getEnergy() < 30) {
 					System.out.println("Moved" + officeList.get(i).GetName());
-					coffeQue.add(officeList.get(i));
+					breakRoom.addWorkerToCoffeQue(officeList.get(i));
 					officeList.remove(i);
 				}
 			}
