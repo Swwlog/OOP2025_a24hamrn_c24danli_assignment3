@@ -40,9 +40,9 @@ public class Worker implements Runnable {
 			try {
 				Thread.sleep(energyDepletionTime);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				}
+			
 				energy = energy - 1;
 				System.out.println(getEnergy()+ GetName());
 				
