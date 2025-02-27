@@ -38,6 +38,7 @@ public class Worker implements Runnable {
 	
 	public void run() {
 		while(energy > 0) {
+			
 			try {
 				Thread.sleep(energyDepletionTime);
 			} catch (InterruptedException e) {
