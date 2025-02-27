@@ -1,14 +1,25 @@
 package assignment3;
 
+import java.util.ArrayList;
+import java.util.concurrent.ConcurrentLinkedQueue;
+
 public class Fika {
+	private ConcurrentLinkedQueue coffeQue;
+	private ArrayList<Worker> workList;
+
+	public Fika() {
+
+		workList = new ArrayList<Worker>();
+		for (int i = 0; i < 5; i++) {
+			Worker worker = new Worker("karl");
+			worker.run();
+			workList.add(worker);
+			System.out.println(worker.GetName());
+		}
+	}
 
 	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		//int rand =(int) (Math.random() * (4-1)) + 1;
-		//HotDrink hotdrink = new HotDrink(rand);
-		CoffeMachine machine = new CoffeMachine();
-		machine.makeDrink();
-		
+		Fika fika = new Fika();
 	}
 
 }
