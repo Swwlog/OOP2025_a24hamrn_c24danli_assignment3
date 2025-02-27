@@ -18,7 +18,7 @@ private HotDrink hotdrink;
 			hotdrink = new HotDrink(rand);
 			coffeReserv.add(hotdrink);
 			System.out.println(hotdrink.GetCoffeName());
-			Thread.sleep(2000);
+			Thread.sleep(2000); // Maby change
 		}
 	}
 	
