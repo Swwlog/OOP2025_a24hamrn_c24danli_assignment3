@@ -13,7 +13,7 @@ public class Worker implements Runnable {
 		
 	}
 
-	public int ShowEnergy() {
+	public int getEnergy() {
 		return energy;
 	}
 
@@ -34,6 +34,7 @@ public class Worker implements Runnable {
 		return energyDepletionTime;
 	}
 
+	
 	public void run() {
 		for (;;) {
 			try {
@@ -43,7 +44,7 @@ public class Worker implements Runnable {
 				e.printStackTrace();
 				}
 				energy = energy - 1;
-				System.out.println(ShowEnergy()+ GetName());
+				System.out.println(getEnergy()+ GetName());
 				
 			}
 		}
