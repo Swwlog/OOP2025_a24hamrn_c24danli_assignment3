@@ -15,7 +15,9 @@ public class BreakRoom implements Runnable {
 	}// work
 
 	public void addWorkerToCoffeQue(Worker worker) {
+		if (worker == null) return;
 		coffeQue.add(worker);
+		System.out.println(coffeQue.size());
 	}
 
 	public void removeFromQueue(Worker worker) {
@@ -26,8 +28,8 @@ public class BreakRoom implements Runnable {
 		return coffeQue.peek();
 
 	}
-	
-	public ConcurrentLinkedQueue getList(){
+
+	public ConcurrentLinkedQueue getList() {
 		return coffeQue;
 	}
 
@@ -40,7 +42,7 @@ public class BreakRoom implements Runnable {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
-					
+
 					e.printStackTrace();
 				}
 				if (coffeQue.peek() != null) {
@@ -48,18 +50,14 @@ public class BreakRoom implements Runnable {
 					coffeQue.peek().DrinkCoffe(coffeMachine.getDrinkEnergy().getEnergy());
 					coffeMachine.removeFirstDrink();
 					System.out.println(coffeMachine.getReserveSize() + " drinks left in machine");
-					if (coffeQue.peek().getEnergy() < 100) {
-						coffeQue.offer(coffeQue.remove());
-					} else {
-						System.out.println(coffeQue.peek().GetName() + " needs to go to work");
-						addWorkerToCoffeQue(coffeQue.poll());
-						// add to work list
-						coffeQue.remove(coffeQue.peek());
+					coffeQue.offer(coffeQue.remove());
+				} /*
+					 * else { System.out.println(coffeQue.peek().GetName() +
+					 * " needs to go to work"); addWorkerToCoffeQue(coffeQue.poll()); // add to work
+					 * list coffeQue.remove(coffeQue.peek());
+					 */
 
-					}
-				}
 			}
-
 		}
 	}
 }

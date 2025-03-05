@@ -18,10 +18,11 @@ public class Fika implements Runnable {
 			e.printStackTrace();
 		}
 		for (int i = 0; i < 5; i++) {
-			Worker worker = new Worker(names[i], officeList, breakRoom);
-			Thread thr1 = new Thread(worker);
-			thr1.start();
+			Worker worker = new Worker(names[i], officeList,breakRoom);
+		//	Thread thr1 = new Thread(worker);
+		//	thr1.start();
 			officeList.add(worker);
+			System.out.println(officeList.size());
 			// System.out.println(worker.GetName());
 		}
 
@@ -34,7 +35,7 @@ public class Fika implements Runnable {
 	public void changeRoom() {
 		if (breakRoom.getFirstPerson().getEnergy() >= 100) {
 			officeList.add(breakRoom.getFirstPerson());
-			breakRoom.getFirstPerson().changeStatus();
+			
 			System.out.println(breakRoom.getFirstPerson().GetName() + " whent back to work");
 			breakRoom.removeFromQueue(breakRoom.getFirstPerson());
 		}
@@ -53,7 +54,7 @@ public class Fika implements Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+			/*
 			if(breakRoom.getFirstPerson() != null) {
 				changeRoom();
 			}
@@ -65,9 +66,9 @@ public class Fika implements Runnable {
 					breakRoom.addWorkerToCoffeQue(officeList.get(i));
 					officeList.remove(i);
 				}
-			}
-		}
+			}*/
 
+		}
 	}
 
 }
