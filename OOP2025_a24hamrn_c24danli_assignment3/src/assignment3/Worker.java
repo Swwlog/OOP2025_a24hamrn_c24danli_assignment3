@@ -72,7 +72,9 @@ public class Worker implements Runnable {
 					breakRoom.addWorkerToCoffeQue(this);
 					officeList.remove(this);
 				}
-				if(energy => 100 && breakRoom.c)
+				if(this.energy >= 100 && breakRoom.getList().contains(this)) {
+					
+				}
 			}
 		}
 	}

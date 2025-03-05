@@ -21,10 +21,14 @@ public class BreakRoom implements Runnable {
 	public void removeFromQueue(Worker worker) {
 		coffeQue.remove(worker);
 	}
-	
+
 	public Worker getFirstPerson() {
 		return coffeQue.peek();
-		
+
+	}
+	
+	public ConcurrentLinkedQueue getList(){
+		return coffeQue;
 	}
 
 	@Override
@@ -36,19 +40,23 @@ public class BreakRoom implements Runnable {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
-				coffeQue.peek().DrinkCoffe(coffeMachine.getDrinkEnergy().getEnergy());
-				coffeMachine.removeFirstDrink();
-				System.out.println(coffeMachine.getReserveSize() + " drinks left in machine");
-				if (coffeQue.peek().getEnergy() < 100) {
-					coffeQue.offer(coffeQue.remove());
-				} else {
-					System.out.println(coffeQue.peek().GetName() + " needs to go to work");
-					addWorkerToCoffeQue(coffeQue.poll());
-					// add to work list
-					coffeQue.remove(coffeQue.peek());
-					
+				if (coffeQue.peek() != null) {
+
+					coffeQue.peek().DrinkCoffe(coffeMachine.getDrinkEnergy().getEnergy());
+					coffeMachine.removeFirstDrink();
+					System.out.println(coffeMachine.getReserveSize() + " drinks left in machine");
+					if (coffeQue.peek().getEnergy() < 100) {
+						coffeQue.offer(coffeQue.remove());
+					} else {
+						System.out.println(coffeQue.peek().GetName() + " needs to go to work");
+						addWorkerToCoffeQue(coffeQue.poll());
+						// add to work list
+						coffeQue.remove(coffeQue.peek());
+
+					}
 				}
 			}
 
