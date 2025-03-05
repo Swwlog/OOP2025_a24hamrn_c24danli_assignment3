@@ -12,7 +12,7 @@ public class BreakRoom implements Runnable {
 		coffeMachine = new CoffeMachine();
 		Thread thr3 = new Thread(this);
 		thr3.start();
-	}
+	}// work
 
 	public void addWorkerToCoffeQue(Worker worker) {
 		coffeQue.add(worker);
@@ -20,6 +20,11 @@ public class BreakRoom implements Runnable {
 
 	public void removeFromQueue(Worker worker) {
 		coffeQue.remove(worker);
+	}
+	
+	public Worker getFirstPerson() {
+		return coffeQue.peek();
+		
 	}
 
 	@Override
@@ -39,11 +44,11 @@ public class BreakRoom implements Runnable {
 				if (coffeQue.peek().getEnergy() < 100) {
 					coffeQue.offer(coffeQue.remove());
 				} else {
-					System.out.println(coffeQue.peek().GetName());
+					System.out.println(coffeQue.peek().GetName() + " needs to go to work");
 					addWorkerToCoffeQue(coffeQue.poll());
+					// add to work list
+					coffeQue.remove(coffeQue.peek());
 					
-					// coffeQue.remove();
-					System.out.println(coffeQue.poll().GetName());
 				}
 			}
 
