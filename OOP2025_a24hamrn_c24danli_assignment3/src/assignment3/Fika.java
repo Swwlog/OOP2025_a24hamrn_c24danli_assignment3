@@ -1,10 +1,8 @@
 package assignment3;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Fika implements Runnable {
-	private ConcurrentLinkedQueue<Worker> coffeQue;
 	private ArrayList<Worker> officeList;
 	BreakRoom breakRoom;
 	private static String[] names = { "Frodo", "Merry", "Pippin", "Gandalf","Legolas","Gimly" };
@@ -36,6 +34,7 @@ public class Fika implements Runnable {
 	public void changeRoom() {
 		if (breakRoom.getFirstPerson().getEnergy() >= 100) {
 			officeList.add(breakRoom.getFirstPerson());
+			breakRoom.getFirstPerson().changeStatus();
 			System.out.println(breakRoom.getFirstPerson().GetName() + " whent back to work");
 			breakRoom.removeFromQueue(breakRoom.getFirstPerson());
 		}
