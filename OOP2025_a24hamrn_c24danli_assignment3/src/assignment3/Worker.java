@@ -5,11 +5,13 @@ public class Worker implements Runnable {
 	private String name;
 	private int energy;
 	private final int energyDepletionTime;
+	private Boolean isWorking;
 
 	public Worker(String name) {
 		this.name = name;
 		this.energy = (int) (Math.random() * (91 - 30)) + 30;
 		this.energyDepletionTime = (int) ((Math.random() * (1501 - 500)) + 500);
+		this.isWorking=true;
 		
 	}//test
 
@@ -34,6 +36,14 @@ public class Worker implements Runnable {
 	public int GetEnergyDepleationTime() {
 		return energyDepletionTime;
 	}
+	public void changeStatus() {
+		if (isWorking==true) {
+			isWorking=false;
+		}
+		else {
+			isWorking=true;
+		}
+	}
 
 	
 	public void run() {
@@ -46,7 +56,13 @@ public class Worker implements Runnable {
 				}
 			
 				energy = energy - 1;
-				System.out.println(getEnergy()+ GetName());
+				if(isWorking==true) {
+					System.out.println(GetName()+" is working with energy level "+getEnergy());	
+				}
+				else {
+					System.out.println(GetName()+" is taking a break with energy level "+getEnergy());	
+				}
+					
 				
 			}
 		}

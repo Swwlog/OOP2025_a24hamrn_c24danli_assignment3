@@ -48,6 +48,7 @@ public class Fika implements Runnable {
 			}
 			for (int i = 0; i < officeList.size(); i++) {
 				if (officeList.get(i).getEnergy() < 30) {
+					officeList.get(i).changeStatus();
 					System.out.println("Moved" + officeList.get(i).GetName());
 					breakRoom.addWorkerToCoffeQue(officeList.get(i));
 					officeList.remove(i);
