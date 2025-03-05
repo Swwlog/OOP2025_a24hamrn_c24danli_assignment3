@@ -7,7 +7,7 @@ public class Fika implements Runnable {
 	private ConcurrentLinkedQueue<Worker> coffeQue;
 	private ArrayList<Worker> officeList;
 	BreakRoom breakRoom;
-
+	private static String[] names = { "Frodo", "Merry", "Pippin", "Gandalf","Legolas","Gimly" };
 	public Fika() {
 		Thread thr2 = new Thread(this);
 		thr2.start();
@@ -20,7 +20,7 @@ public class Fika implements Runnable {
 			e.printStackTrace();
 		}
 		for (int i = 0; i < 5; i++) {
-			Worker worker = new Worker(" Worker " + (i + 1));
+			Worker worker = new Worker(names[i]);
 			Thread thr1 = new Thread(worker);
 			thr1.start();
 			officeList.add(worker);
