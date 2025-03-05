@@ -32,6 +32,14 @@ public class Fika implements Runnable {
 	public void addWorkerToWorkList(Worker worker) {
 		officeList.add(worker);
 	}
+	
+	public void changeRoom() {
+		if (breakRoom.getFirstPerson().getEnergy() >= 100) {
+			officeList.add(breakRoom.getFirstPerson());
+			System.out.println(breakRoom.getFirstPerson().GetName() + " whent back to work");
+			breakRoom.removeFromQueue(breakRoom.getFirstPerson());
+		}
+	}
 
 	public static void main(String[] args) throws InterruptedException {
 		Fika fika = new Fika();
@@ -46,6 +54,11 @@ public class Fika implements Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			if(breakRoom.getFirstPerson() != null) {
+				changeRoom();
+			}
+			
 			for (int i = 0; i < officeList.size(); i++) {
 				if (officeList.get(i).getEnergy() < 30) {
 					officeList.get(i).changeStatus();
