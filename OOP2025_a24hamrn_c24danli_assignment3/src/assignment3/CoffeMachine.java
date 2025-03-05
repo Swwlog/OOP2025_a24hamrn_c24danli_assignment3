@@ -43,7 +43,7 @@ private HotDrink hotdrink;
 				int rand =(int) (Math.random() * (4-1)) + 1;
 				hotdrink = new HotDrink(rand);
 				coffeReserv.add(hotdrink);
-				System.out.println(hotdrink.GetCoffeName());
+				System.out.println(hotdrink.GetCoffeName()+" created. Coffe Machine has "+ getReserveSize()+" drinks in reserve.");
 		}
 		
 	}
