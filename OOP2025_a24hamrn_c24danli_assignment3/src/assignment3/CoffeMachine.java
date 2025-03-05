@@ -5,9 +5,11 @@ import java.util.ArrayList;
 public class CoffeMachine implements Runnable {
 	private ArrayList<HotDrink> coffeReserv;
 	private HotDrink hotdrink;
+	private int simulationSpeed;
 
-	public CoffeMachine() {
+	public CoffeMachine(int simulationSpeed) {
 		this.coffeReserv = new ArrayList<HotDrink>();
+		this.simulationSpeed=simulationSpeed;
 		Thread thr4 = new Thread(this);
 		thr4.start();
 	}
@@ -36,7 +38,7 @@ public class CoffeMachine implements Runnable {
 			while (coffeReserv.size() < 20) {
 
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(2000/simulationSpeed);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

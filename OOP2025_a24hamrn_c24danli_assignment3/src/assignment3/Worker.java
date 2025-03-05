@@ -1,28 +1,27 @@
 package assignment3;
 
 import java.util.ArrayList;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Worker implements Runnable {
 
 	private String name;
 	private int energy;
 	private final int energyDepletionTime;
-
 	private ArrayList<Worker> officeList;
 	private BreakRoom breakRoom;
 	private Thread thr1;
+	private int simulationSpeed;
 
-	public Worker(String name, ArrayList<Worker> officeList, BreakRoom breakRoom) {
+	public Worker(String name, ArrayList<Worker> officeList, BreakRoom breakRoom, int simulationSpeed) {
 		this.name = name;
 		this.energy = (int) (Math.random() * (91 - 30)) + 30;
 		this.energyDepletionTime = (int) ((Math.random() * (1501 - 500)) + 500);
-
 		this.officeList = officeList;
 		this.breakRoom = breakRoom;
+		this.simulationSpeed =simulationSpeed;
 		thr1 = new Thread(this);
 		thr1.start();
-	}// test
+	}
 
 	public int getEnergy() {
 		return energy;
@@ -50,7 +49,7 @@ public class Worker implements Runnable {
 		while (energy > 0) {
 
 			try {
-				Thread.sleep(energyDepletionTime);
+				Thread.sleep(energyDepletionTime/simulationSpeed);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -75,7 +74,7 @@ public class Worker implements Runnable {
 			}
 
 		}
-		breakRoom.getList().remove(this);
+		breakRoom.removeFromQueue(this);
 		thr1.interrupt();
 		// stoppa run
 	}
