@@ -34,6 +34,8 @@ public class BreakRoom implements Runnable {
 					e.printStackTrace();
 				}
 				coffeQue.peek().DrinkCoffe(coffeMachine.getDrinkEnergy().getEnergy());
+				coffeMachine.removeFirstDrink();
+				System.out.println(coffeMachine.getReserveSize() + " drinks left in machine");
 				if (coffeQue.peek().getEnergy() < 100) {
 					coffeQue.offer(coffeQue.remove());
 				} else {

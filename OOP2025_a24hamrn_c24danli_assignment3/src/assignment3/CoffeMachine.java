@@ -21,13 +21,18 @@ private HotDrink hotdrink;
 	{
 		return coffeReserv.get(index).GetCoffeName();
 	}
+	
 	public int getReserveSize() {
 		return coffeReserv.size();
 	}
-	public HotDrink getDrinkEnergy()
-	{
+	
+	public HotDrink getDrinkEnergy() {
 		return coffeReserv.getFirst();
 }
+	
+	public void removeFirstDrink() {
+		coffeReserv.removeFirst();
+	}
 
 	@Override
 	public void run() {
