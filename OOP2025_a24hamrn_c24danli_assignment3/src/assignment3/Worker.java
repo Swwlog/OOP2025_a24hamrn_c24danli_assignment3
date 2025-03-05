@@ -67,8 +67,12 @@ public class Worker implements Runnable {
 				else {
 					System.out.println(GetName()+" is taking a break with energy level "+getEnergy());	
 				}
-					
 				
+				if (energy<30 && officeList.contains(this)) {
+					breakRoom.addWorkerToCoffeQue(this);
+					officeList.remove(this);
+				}
+				if(energy => 100 && breakRoom.c)
 			}
 		}
 	}
