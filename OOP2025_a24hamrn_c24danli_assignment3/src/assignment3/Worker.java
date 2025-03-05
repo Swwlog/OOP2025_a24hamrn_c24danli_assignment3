@@ -71,7 +71,7 @@ public class Worker implements Runnable {
 			if (energy >= 100 && breakRoom.getList().contains(this)) {
 				officeList.add(this);
 				System.out.println(this.GetName() + " moved to work");
-				breakRoom.getList().remove(this);
+				breakRoom.removeFromQueue(this);
 			}
 
 		}

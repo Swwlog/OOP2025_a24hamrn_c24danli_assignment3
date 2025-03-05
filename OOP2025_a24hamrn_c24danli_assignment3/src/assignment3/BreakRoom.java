@@ -15,18 +15,14 @@ public class BreakRoom implements Runnable {
 	}// work
 
 	public void addWorkerToCoffeQue(Worker worker) {
-		if (worker == null) return;
+		if (worker == null)
+			return;
 		coffeQue.add(worker);
 		System.out.println(coffeQue.size());
 	}
 
 	public void removeFromQueue(Worker worker) {
 		coffeQue.remove(worker);
-	}
-
-	public Worker getFirstPerson() {
-		return coffeQue.peek();
-
 	}
 
 	public ConcurrentLinkedQueue getList() {
@@ -51,12 +47,7 @@ public class BreakRoom implements Runnable {
 					coffeMachine.removeFirstDrink();
 					System.out.println(coffeMachine.getReserveSize() + " drinks left in machine");
 					coffeQue.offer(coffeQue.remove());
-				} /*
-					 * else { System.out.println(coffeQue.peek().GetName() +
-					 * " needs to go to work"); addWorkerToCoffeQue(coffeQue.poll()); // add to work
-					 * list coffeQue.remove(coffeQue.peek());
-					 */
-
+				}
 			}
 		}
 	}
