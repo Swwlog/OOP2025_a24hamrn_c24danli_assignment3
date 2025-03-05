@@ -18,7 +18,7 @@ public class Fika implements Runnable {
 			e.printStackTrace();
 		}
 		for (int i = 0; i < 5; i++) {
-			Worker worker = new Worker(names[i]);
+			Worker worker = new Worker(names[i], officeList, breakRoom);
 			Thread thr1 = new Thread(worker);
 			thr1.start();
 			officeList.add(worker);

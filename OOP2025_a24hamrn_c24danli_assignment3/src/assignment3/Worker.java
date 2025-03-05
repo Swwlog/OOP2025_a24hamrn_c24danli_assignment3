@@ -1,18 +1,23 @@
 package assignment3;
 
+import java.util.ArrayList;
+
 public class Worker implements Runnable {
 
 	private String name;
 	private int energy;
 	private final int energyDepletionTime;
 	private Boolean isWorking;
+	private ArrayList<Worker> officeList;
+	private BreakRoom breakRoom;
 
-	public Worker(String name) {
+	public Worker(String name, ArrayList<Worker> officeList, BreakRoom breakRoom) {
 		this.name = name;
 		this.energy = (int) (Math.random() * (91 - 30)) + 30;
 		this.energyDepletionTime = (int) ((Math.random() * (1501 - 500)) + 500);
 		this.isWorking=true;
-		
+		this.officeList = officeList;
+		this.breakRoom = breakRoom;
 	}//test
 
 	public int getEnergy() {
