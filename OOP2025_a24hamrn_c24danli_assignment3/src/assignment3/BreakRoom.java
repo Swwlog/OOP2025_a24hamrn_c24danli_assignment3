@@ -20,7 +20,6 @@ public class BreakRoom implements Runnable {
 		if (worker == null)
 			return;
 		coffeQue.add(worker);
-		System.out.println(coffeQue.size());
 	}
 
 	public void removeFromQueue(Worker worker) {

@@ -14,7 +14,6 @@ public class CoffeMachine implements Runnable {
 		thr4.start();
 	}
 
-	// public void makeDrink() throws InterruptedException {
 
 	public String getDrinkName(int index) {
 		return coffeReserv.get(index).GetCoffeName();
@@ -48,6 +47,8 @@ public class CoffeMachine implements Runnable {
 				coffeReserv.add(hotdrink);
 				System.out.println(hotdrink.GetCoffeName() + " created. Coffe Machine has " + getReserveSize()
 						+ " drinks in reserve.");
+				System.out.println("---------------------------------------------------------------------------------");
+				//line above is to see output in "diffrent"parts
 			}
 
 		}
