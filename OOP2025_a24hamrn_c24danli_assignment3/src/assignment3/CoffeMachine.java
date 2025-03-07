@@ -21,14 +21,9 @@ public class CoffeMachine implements Runnable {
 	}
 	
 	public HotDrink getFirstDrink() {
-		return coffeReserv.poll();
-	}
-	
-
-	public HotDrink getDrinkEnergy() {
 		return coffeReserv.peek();
 	}
-
+	
 	public void removeFirstDrink() {
 		coffeReserv.remove();
 	}

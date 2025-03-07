@@ -1,6 +1,5 @@
 package assignment3;
 
-import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Worker implements Runnable {
@@ -12,7 +11,6 @@ public class Worker implements Runnable {
 	private BreakRoom breakRoom;
 	private CoffeMachine coffeMachine;
 	private Thread thr1;
-	private Thread thr2;
 	private int simulationSpeed;
 
 	public Worker(String name, ConcurrentLinkedQueue<Worker> officeList, BreakRoom breakRoom, int simulationSpeed, CoffeMachine coffeMachine) {
@@ -56,20 +54,20 @@ public class Worker implements Runnable {
 			if(breakRoom.getList().peek() == this && coffeMachine.getReserveSize() > 0) {
 				
 				try {
-					thr1.sleep(1000/simulationSpeed);
+					Thread.sleep(1000/simulationSpeed);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
-				drinkCoffe(coffeMachine.getDrinkEnergy());
+				drinkCoffe(coffeMachine.getFirstDrink());
 				coffeMachine.removeFirstDrink();
-				System.out.println(this.name + " " + breakRoom.getList().size());
+				System.out.println("There is " + coffeMachine.getReserveSize() + " drinks left");
 				breakRoom.getList().offer(breakRoom.getList().remove());
 			}
 			
 			try {
-				thr1.sleep(energyDepletionTime / simulationSpeed);
+				Thread.sleep(energyDepletionTime / simulationSpeed);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

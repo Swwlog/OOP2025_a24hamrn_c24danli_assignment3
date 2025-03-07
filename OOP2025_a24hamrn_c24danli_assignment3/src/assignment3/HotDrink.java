@@ -23,9 +23,7 @@ public class HotDrink {
 			this.energy = (int) (Math.random() * (35 - 25)) + 25;
 			this.name = "Latte";
 			break;
-		}
-
-		
+		}		
 	}
 
 	public String getCoffeName() {

@@ -5,7 +5,6 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class BreakRoom {
 
 	private ConcurrentLinkedQueue<Worker> coffeQue;
-	private int simulationSpeed;
 
 	public BreakRoom() {
 		coffeQue = new ConcurrentLinkedQueue<Worker>();
@@ -21,10 +20,7 @@ public class BreakRoom {
 		coffeQue.remove(worker);
 	}
 
-	public ConcurrentLinkedQueue getList() {
+	public ConcurrentLinkedQueue<Worker> getList() {
 		return coffeQue;
-	}
-
-	{
 	}
 }
