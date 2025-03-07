@@ -1,14 +1,14 @@
 package assignment3;
 
-public class Latte extends HotDrink{
+public class Latte extends HotDrink {
 
 	public Latte() {
-			setEnergyAndName();
-		}
+		setEnergyAndName();
+	}
 
-@Override
-public void setEnergyAndName() {
-    this.energy = (int) (Math.random() * (35 - 25)) + 25; 
-    this.name = "Latte";
-}
+	@Override
+	public void setEnergyAndName() {
+		this.energy = (int) (Math.random() * (35 - 25)) + 25;
+		this.name = "Latte";
+	}
 }
