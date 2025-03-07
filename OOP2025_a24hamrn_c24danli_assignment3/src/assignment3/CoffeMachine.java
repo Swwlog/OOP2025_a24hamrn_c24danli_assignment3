@@ -40,12 +40,31 @@ public class CoffeMachine implements Runnable {
 					e.printStackTrace();
 				}
 				int rand = (int) (Math.random() * (4 - 1)) + 1;
-				hotdrink = new HotDrink(rand);
-				coffeReserv.add(hotdrink);
-				System.out.println(hotdrink.getCoffeName() + " created. Coffe Machine has " + getReserveSize()
-						+ " drinks in reserve.");
-				System.out.println("---------------------------------------------------------------------------------");
-				//line above is to see output in "diffrent"parts
+				switch(rand) {
+				case 1:
+					hotdrink = new Latte();
+					coffeReserv.add(hotdrink);
+					System.out.println(hotdrink.getCoffeName() + " created. Coffe Machine has " + getReserveSize()
+							+ " drinks in reserve.");
+					System.out.println("---------------------------------------------------------------------------------");
+					break;
+				case 2:
+					hotdrink = new Cappuccino();
+					coffeReserv.add(hotdrink);
+					System.out.println(hotdrink.getCoffeName() + " created. Coffe Machine has " + getReserveSize()
+							+ " drinks in reserve.");
+					System.out.println("---------------------------------------------------------------------------------");
+					break;
+				case 3:
+					hotdrink = new BlackCoffe();
+					coffeReserv.add(hotdrink);
+					System.out.println(hotdrink.getCoffeName() + " created. Coffe Machine has " + getReserveSize()
+							+ " drinks in reserve.");
+					System.out.println("---------------------------------------------------------------------------------");
+					break;
+				}
+				
+				
 			}
 
 		}
