@@ -3,6 +3,7 @@ package assignment3;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Fika implements Runnable {
+	private CoffeMachine coffeMachine;
 	private ConcurrentLinkedQueue<Worker> officeList;
 	private Thread fikaThread;
 	BreakRoom breakRoom;
@@ -12,21 +13,22 @@ public class Fika implements Runnable {
 	// "names" contain 29 names witch is the limit for "workForce" variable if you
 	// need more
 	// add more names in "names"
-	private int timer = 20; // Change for amount of second run in the simulation
-	private int workForce = 5;// change to change amount of workers(highest 29 )
+	private int timer = 2000; // Change for amount of second run in the simulation
+	private int workForce = 20;// change to change amount of workers(highest 29 )
 	private int simulationSpeed = 1; // 1= normal speed, higher for faster speed(no negative or 0)
 										// the number in simulation speed divides the normal speed 2=/2 3 =/3..... n=/n
 
 	public Fika() {
 		officeList = new ConcurrentLinkedQueue<Worker>();
-		breakRoom = new BreakRoom(simulationSpeed);
+		breakRoom = new BreakRoom();
+		coffeMachine = new CoffeMachine(simulationSpeed);
 		fikaThread = new Thread(this);
 		fikaThread.start();
 		if (workForce > 29) {
 			workForce = 29;
 		}
 		for (int i = 0; i < workForce; i++) {
-			Worker worker = new Worker(names[i], officeList, breakRoom, simulationSpeed);
+			Worker worker = new Worker(names[i], officeList, breakRoom, simulationSpeed, coffeMachine);
 			officeList.add(worker);
 		}
 

@@ -1,6 +1,5 @@
 package assignment3;
 
-import java.util.ArrayList;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class CoffeMachine implements Runnable {
@@ -20,6 +19,11 @@ public class CoffeMachine implements Runnable {
 	public int getReserveSize() {
 		return coffeReserv.size();
 	}
+	
+	public HotDrink getFirstDrink() {
+		return coffeReserv.poll();
+	}
+	
 
 	public HotDrink getDrinkEnergy() {
 		return coffeReserv.peek();

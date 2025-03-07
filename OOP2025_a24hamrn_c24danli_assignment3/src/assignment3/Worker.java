@@ -10,16 +10,19 @@ public class Worker implements Runnable {
 	private final int energyDepletionTime;
 	private ConcurrentLinkedQueue<Worker> officeList;
 	private BreakRoom breakRoom;
+	private CoffeMachine coffeMachine;
 	private Thread thr1;
+	private Thread thr2;
 	private int simulationSpeed;
 
-	public Worker(String name, ConcurrentLinkedQueue<Worker> officeList, BreakRoom breakRoom, int simulationSpeed) {
+	public Worker(String name, ConcurrentLinkedQueue<Worker> officeList, BreakRoom breakRoom, int simulationSpeed, CoffeMachine coffeMachine) {
 		this.name = name;
 		this.energy = (int) (Math.random() * (91 - 30)) + 30;
 		this.energyDepletionTime = (int) ((Math.random() * (1501 - 500)) + 500);
 		this.officeList = officeList;
 		this.breakRoom = breakRoom;
 		this.simulationSpeed = simulationSpeed;
+		this.coffeMachine = coffeMachine;
 		thr1 = new Thread(this);
 		thr1.start();
 	}
@@ -49,13 +52,30 @@ public class Worker implements Runnable {
 	public void run() {
 		while (energy > 0) {
 
+			
+			if(breakRoom.getList().peek() == this && coffeMachine.getReserveSize() > 0) {
+				
+				try {
+					thr1.sleep(1000/simulationSpeed);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				drinkCoffe(coffeMachine.getDrinkEnergy());
+				coffeMachine.removeFirstDrink();
+				System.out.println(this.name + " " + breakRoom.getList().size());
+				breakRoom.getList().offer(breakRoom.getList().remove());
+			}
+			
 			try {
-				Thread.sleep(energyDepletionTime / simulationSpeed);
+				thr1.sleep(energyDepletionTime / simulationSpeed);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-
 			energy = energy - 1;
+			
+			
 			if (officeList.contains(this)) {
 				System.out.println(getName() + " is working with energy level " + getEnergy());
 			} else {
