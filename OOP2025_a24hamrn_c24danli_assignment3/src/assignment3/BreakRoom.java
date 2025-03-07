@@ -10,7 +10,7 @@ public class BreakRoom implements Runnable {
 
 	public BreakRoom(int simulationSpeed) {
 		coffeQue = new ConcurrentLinkedQueue<Worker>();
-		this.simulationSpeed=simulationSpeed;
+		this.simulationSpeed = simulationSpeed;
 		coffeMachine = new CoffeMachine(simulationSpeed);
 		Thread thr3 = new Thread(this);
 		thr3.start();
@@ -36,7 +36,7 @@ public class BreakRoom implements Runnable {
 
 			if (coffeQue.size() > 0 && coffeMachine.getReserveSize() > 0) {
 				try {
-					Thread.sleep(1000/simulationSpeed);
+					Thread.sleep(1000 / simulationSpeed);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 
@@ -44,7 +44,7 @@ public class BreakRoom implements Runnable {
 				}
 				if (coffeQue.peek() != null) {
 
-					coffeQue.peek().DrinkCoffe(coffeMachine.getDrinkEnergy().getEnergy());
+					coffeQue.peek().drinkCoffe(coffeMachine.getDrinkEnergy().getEnergy());
 					coffeMachine.removeFirstDrink();
 					System.out.println(coffeMachine.getReserveSize() + " drinks left in machine");
 					coffeQue.offer(coffeQue.remove());

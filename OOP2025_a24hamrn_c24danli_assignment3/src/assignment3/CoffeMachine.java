@@ -16,7 +16,7 @@ public class CoffeMachine implements Runnable {
 
 
 	public String getDrinkName(int index) {
-		return coffeReserv.get(index).GetCoffeName();
+		return coffeReserv.get(index).getCoffeName();
 	}
 
 	public int getReserveSize() {
@@ -45,7 +45,7 @@ public class CoffeMachine implements Runnable {
 				int rand = (int) (Math.random() * (4 - 1)) + 1;
 				hotdrink = new HotDrink(rand);
 				coffeReserv.add(hotdrink);
-				System.out.println(hotdrink.GetCoffeName() + " created. Coffe Machine has " + getReserveSize()
+				System.out.println(hotdrink.getCoffeName() + " created. Coffe Machine has " + getReserveSize()
 						+ " drinks in reserve.");
 				System.out.println("---------------------------------------------------------------------------------");
 				//line above is to see output in "diffrent"parts

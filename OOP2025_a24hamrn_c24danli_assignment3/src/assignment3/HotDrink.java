@@ -28,7 +28,7 @@ public class HotDrink {
 		
 	}
 
-	public String GetCoffeName() {
+	public String getCoffeName() {
 		return this.name;
 	}
 
