@@ -1,34 +1,32 @@
 package assignment3;
 
 import java.util.ArrayList;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class CoffeMachine implements Runnable {
-	private ArrayList<HotDrink> coffeReserv;
+	private ConcurrentLinkedQueue<HotDrink> coffeReserv;
 	private HotDrink hotdrink;
 	private int simulationSpeed;
 
 	public CoffeMachine(int simulationSpeed) {
-		this.coffeReserv = new ArrayList<HotDrink>();
+		this.coffeReserv = new ConcurrentLinkedQueue<HotDrink>();
 		this.simulationSpeed=simulationSpeed;
 		Thread thr4 = new Thread(this);
 		thr4.start();
 	}
 
 
-	public String getDrinkName(int index) {
-		return coffeReserv.get(index).getCoffeName();
-	}
 
 	public int getReserveSize() {
 		return coffeReserv.size();
 	}
 
 	public HotDrink getDrinkEnergy() {
-		return coffeReserv.getFirst();
+		return coffeReserv.peek();
 	}
 
 	public void removeFirstDrink() {
-		coffeReserv.removeFirst();
+		coffeReserv.remove();
 	}
 
 	@Override

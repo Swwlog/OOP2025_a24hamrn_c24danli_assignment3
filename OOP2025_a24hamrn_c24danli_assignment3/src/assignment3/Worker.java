@@ -28,9 +28,9 @@ public class Worker implements Runnable {
 		return energy;
 	}
 
-	public int drinkCoffe(int drink) {
-		energy = energy + drink;
-		System.out.println(getName() + " drank a coffe and got " + drink + " energy");
+	public int drinkCoffe(HotDrink drink) {
+		energy = energy + drink.getEnergy();
+		System.out.println(getName() + " drank a " + drink.getCoffeName() +  " and got " + drink.getEnergy() + " energy");
 		return energy;
 	}
 
